@@ -1,0 +1,88 @@
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+    min-height: 100vh;  
+    padding: 40px;
+
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(135deg, #0074ff, #fbfbfb);
+}
+
+.cloud {
+    font-size: 100px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+}
+
+.cloud-title {
+    font-size: 28px;
+    
+    color: #1f2937;
+}
+
+.mood-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:20px;
+    max-width: 7000px;
+}
+
+.mood-button {
+    font-family: 'Poppins', 'sans-serif';
+    background: #f0f8ff;
+    border: 2px solid #a1c4fd;
+    padding: 18px 20px;
+    min-width: 120px;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selected {
+    background: #0074ff;
+    color: white;
+    border-color: #0074ff;
+    border: 2px solid #0074ff;
+}
+
+.mood-button:hover {
+    background: #a1c4fd;
+    color: white;
+    transform: translateY(-2px);
+}
+.submit-mood {
+    font-family: 'Poppins', sans-serif; /* Match your h3 font */
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #0074ff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-mood:hover {
+    background-color: #005fd1;
+}
+  
