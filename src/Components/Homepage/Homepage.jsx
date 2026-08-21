@@ -12,11 +12,29 @@ function Homepage({currentUser, selectedMood, goToBookmarks, goToCloudAI, setBoo
 
         // Get user's location
         navigator.geolocation.getCurrentPosition((position) => {
+
+
+           const moods = [
+                "coffee",
+                "food",
+                "workout",
+                "party",
+                "shopping",
+                "artsy",
+                "adventurous",
+                "education"
+            ];
+
             const payload = {
                 longitude: position.coords.longitude,
-                latitude: position.coords.latitude,
-                mood: selectedMood
+                latitude: position.coords.latitude
             };
+
+            if (moods.includes(selectedMood)) {
+                payload.mood = selectedMood;
+            } else {
+                payload.user_input = selectedMood;
+            }
         
             fetch("http://127.0.0.1:5555/recommendations", {
                 method: "POST",

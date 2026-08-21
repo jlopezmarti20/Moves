@@ -48,12 +48,17 @@ const moodsOptions = [
 
 function CloudAI ({setSelectedMood, goToHomepage}) {
     const [localSelectedMood, setLocalSelectedMood] = useState("");
-    const [customMood] = useState("");
+    const [customMood, setCustomMood] = useState("");
 
     const handleSubmit = () => {
-        // Save selected mood
-        setSelectedMood(localSelectedMood)
-        // navigate to homepage
+        
+        if (customMood.trim() !== "") {
+        setSelectedMood(customMood);
+        }
+        else {
+            setSelectedMood(localSelectedMood);
+        }
+
         goToHomepage();
     };
 
@@ -69,7 +74,7 @@ function CloudAI ({setSelectedMood, goToHomepage}) {
 
             <h1 className='cloud-title'>What's the Move for today?</h1>
 
-            <p className='cloud-subtitle'>Pick the vibe you're feeling, and I'll find something you'll enjoy.</p>
+            <p className='cloud-subtitle'>Pick a mood or describe exactly what you're looking for, and I'll find the perfect place.</p>
 
             <div className='mood-options'>
                 {moodsOptions.map((mood) => (
@@ -82,6 +87,19 @@ function CloudAI ({setSelectedMood, goToHomepage}) {
                         <span>{mood.label}</span>
                     </button>
                 ))}
+            </div>
+            <p className="or-divider">
+                — or —
+            </p>
+            <div className='ai-input-section'>
+                
+                <h3>☁️ Ask Moves AI</h3>
+                <textarea
+                    className="custom-mood-input"
+                    placeholder="Describe what you're looking for... (e.g. I'm looking for somewhere quiet to study after work)"
+                    value={customMood}
+                    onChange={(e) => setCustomMood(e.target.value)}
+                />
             </div>
 
             <div className='mood-input-container'>
