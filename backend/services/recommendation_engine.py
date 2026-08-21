@@ -4,14 +4,24 @@ from services.google_places import get_city_from_coordinates , fetch_similar_goo
 from config import mood_type_map
 GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY")
 
+
 # this file answer the question: Given a mood and a location, what places should I recommend?
 
-def get_recommendations(user_mood: str, latitude: float, longitude: float, rating_threshold: float=3.0) -> dict:
+def get_recommendations(latitude: float, longitude: float, user_mood: str = None, analysis: dict = None, rating_threshold: float=3.0) -> dict:
 
     city = get_city_from_coordinates(latitude, longitude)
 
-    print("Received mood:", user_mood)
-    mood_types = mood_type_map.get(user_mood.lower())
+    
+
+    
+    if analysis:
+        
+        mood_types = analysis["place_types"]
+    else:
+        
+        mood_types = mood_type_map.get(user_mood.lower())
+
+    
 
     all_businesses = []
     for place_type in mood_types:
@@ -27,6 +37,7 @@ def get_recommendations(user_mood: str, latitude: float, longitude: float, ratin
         if rating >= rating_threshold:
             filtered_businesses.append(business)
 
+    
    
 
     nearby_businesses = []

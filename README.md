@@ -21,7 +21,6 @@ Moves is a full-stack web application that recommends nearby places based on a u
 ### Frontend
 
 - React
-- Vite
 - JavaScript
 - CSS
 

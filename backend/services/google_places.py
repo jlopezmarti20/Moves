@@ -110,6 +110,9 @@ def fetch_similar_google_places(city: str, category_keywords: str):
 
     response = requests.post(url, headers=headers, json=body)
 
+    
+
+    
    
 
     places = response.json().get("places", [])
